@@ -1,6 +1,7 @@
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import UserProfileForm from '../components/UserProfileForm';
+import Link from 'next/link';
 
 function Index() {
   const { user, error, isLoading } = useUser();
@@ -16,7 +17,7 @@ function Index() {
           <UserProfileForm /> {/* Intégrez le formulaire ici */}
         </div>
       ) : (
-        <a href="/api/auth/login">Login</a>
+    <Link href="/api/auth/login/">Login</Link>
       )}
     </div>
   );

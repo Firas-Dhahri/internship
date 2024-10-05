@@ -1,13 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import validateAddress from './validateAddress'; // Assurez-vous d'importer votre méthode de validation
 
-interface UpdateUserProfileResponse {
-  status: number;
-  body: {
-    error?: string;
-    message?: string;
-  };
-}
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
