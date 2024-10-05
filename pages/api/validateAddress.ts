@@ -1,10 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-interface AddressData {
-  lat: number;
-  lon: number;
-  distance: number;
-}
+import type { NextApiRequest } from 'next';
 
 function getDistanceFromParis(lat: number, lon: number): number {
   const parisLat = 48.8566;
@@ -26,7 +20,6 @@ function getDistanceFromParis(lat: number, lon: number): number {
 
 export default async function validateAddress(
   req: NextApiRequest,
-  res: NextApiResponse
 ): Promise<{ status: number; body: { error?: string; lat?: number; lon?: number; distance?: number } }> {
   const { address } = req.query;
 
@@ -69,7 +62,8 @@ export default async function validateAddress(
       status: 200,
       body: { lat, lon, distance },
     };
-  } catch (error) {
+  } catch (err) { // Changed from 'error' to 'err'
+    console.error(err); // Log the error for debugging
     return {
       status: 500,
       body: { error: 'Erreur lors de la récupération des données d\'adresse' },

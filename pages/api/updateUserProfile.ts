@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Validation de l'adresse
-  const addressValidationResponse = await validateAddress({ query: { address } } as unknown as NextApiRequest, res);
+  const addressValidationResponse = await validateAddress({ query: { address } } as unknown as NextApiRequest);
 
   // Vérifiez si la réponse de validation d'adresse contient une erreur
   if (addressValidationResponse.status !== 200) {
